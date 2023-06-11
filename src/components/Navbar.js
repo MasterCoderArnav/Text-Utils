@@ -1,10 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Navbar(props) {
+  let classVar;
+  let textColor;
+  if (props.mode) {
+    classVar = "navbar navbar-expand-lg navbar-dark bg-dark";
+    textColor = "light";
+  } else {
+    classVar = "navbar navbar-expand-lg navbar-light bg-light";
+    textColor = "dark";
+  }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className={classVar}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -33,30 +42,31 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <div className={`form-check form-switch text-${textColor}`}>
               <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleMode}
               />
-              <button className="btn btn-success" type="submit">
-                Search
-              </button>
-            </form>
+              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                Change Mode
+              </label>
+            </div>
           </div>
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string.isRequired,
-}
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string.isRequired,
+};
 
 Navbar.defaultProps = {
-    title: "Set title here",
-    aboutText: "About Text here"
-}
+  title: "Set title here",
+  aboutText: "About Text here",
+};
