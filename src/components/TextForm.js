@@ -39,7 +39,7 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
     return (
-        <>
+        <div className="container my-3">
             <div className="my-3">
                 <h3 style={{color:props.mode?"whitesmoke":"black"}}>{props.heading}</h3>
                 <div className="mb-3">
@@ -57,12 +57,12 @@ export default function TextForm(props) {
             <div className="container my-2" style={{color:props.mode?"whitesmoke":"black"}}>
                 <h3>Your text summary here</h3>
                 <p>{(text.split(" ")[text.split(" ").length-1]==="")?text.split(" ").length-1:text.split(" ").length} words and {text.length} characters</p>
-                <p>{text.split(" ").length*0.005} minutes read</p>
+                <p>{((text.split(" ")[text.split(" ").length-1]==="")?text.split(" ").length-1:text.split(" ").length)*0.005} minutes read</p>
             </div>
             <div className="container my-2" style={{color:props.mode?"whitesmoke":"black"}}>
                 <h3>Preview</h3>
                 <p>{text.length>0?text:"Enter some text in text box to preview it here"}</p>
             </div>
-        </>
+        </div>
     );
 }
