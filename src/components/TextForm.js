@@ -57,10 +57,10 @@ export default function TextForm(props) {
             </div>
             <div className="container my-2" style={{color:props.mode?"whitesmoke":"black"}}>
                 <h3>Your text summary here</h3>
-                <p>{text.split(" ").filter((elem)=>{
+                <p>{text.split(/\s+/).filter((elem)=>{
                     return elem.length!==0;
                 }).length} words and {text.length} characters</p>
-                <p>{(text.split(" ").filter((elem)=>{
+                <p>{(text.split(/\s+/).filter((elem)=>{
                     return elem.length!==0;
                 }).length)*0.005} minutes read</p>
             </div>
